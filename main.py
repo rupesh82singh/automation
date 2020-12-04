@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from src.audit.signalfx import IntegrationSignalfx
+from src.audit.signalfx import singalfx_data, IntegrationSignalfx
 from src.audit.validate_aduser import getconnection, isuser
 import os
 import logging
@@ -11,7 +11,7 @@ def lambda_handler( event, _):
     logger = logging.getLogger()
     dryrun = event.get('dryrun', False)
     ldap = getconnection()
-    sources = [IntegrationSignalfx()]
+    sources = [IntegrationSignalfx(singalfx_data())]
     
     for source in sources:
         messagepub = MessagePublisher(source.name())
