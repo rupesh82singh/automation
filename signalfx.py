@@ -6,7 +6,8 @@ from src.audit.integration_base import IntegrationBase
 
 
 class IntegrationSignalfx(IntegrationBase):
-    def __init__(self, data):
+    def __init__(self):
+        data = {"API_URL": os.getenv("SIGNALFX_API"), "TOKEN": os.getenv("SIGNALFX_TOKEN")}
         super().__init__(data)
         self.api_url = data.get("API_URL")
         self.headers = {'X-SF-Token': data.get('TOKEN')}
