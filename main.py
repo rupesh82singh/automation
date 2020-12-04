@@ -11,7 +11,7 @@ def lambda_handler( event, _):
     logger = logging.getLogger()
     data = {"API_URL": os.getenv("SIGNALFX_API"), "TOKEN": os.getenv("SIGNALFX_TOKEN")}
     integrationsfx = IntegrationSignalfx(data)
-    messagepub = MessagePublisher()
+    messagepub = MessagePublisher("SignalFx")
     users = integrationsfx.get_users()
     ldap = getconnection()
     dryrun = event.get('dryrun', False)
