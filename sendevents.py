@@ -7,9 +7,9 @@ import requests
 class MessagePublisher:
     """Contains logic for creating MessageBus payload for security-audit alerts"""
 
-    def __init__(self):
+    def __init__(self, source):
         """Creates necessary configuration"""
-        self.source = "SignalFx"
+        self.source = source
         self.message_bus_url = 'https://message-bus.sre.malwarebytes.com/message-bus'
         self.type = 'security-audit'
         self.logger = logging.getLogger('security_audit')
