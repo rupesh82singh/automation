@@ -8,7 +8,7 @@ def singalfx_data():
     return {"API_URL": os.getenv("SIGNALFX_API"), "TOKEN": os.getenv("SIGNALFX_TOKEN")}
 
 class IntegrationSignalfx(IntegrationBase):
-    def __init__(self):
+    def __init__(self, data):
         super().__init__(data)
         self.api_url = data.get("API_URL")
         self.headers = {'X-SF-Token': data.get('TOKEN')}
