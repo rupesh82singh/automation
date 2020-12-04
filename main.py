@@ -10,12 +10,12 @@ def lambda_handler( event, _):
 
     logger = logging.getLogger()
     dryrun = event.get('dryrun', False)
+    ldap = getconnection()
     sources = [IntegrationSignalfx()]
     
     for source in sources:
         messagepub = MessagePublisher(source.name())
         users = source.get_users()
-        ldap = getconnection()
 
         for user in users:
             if not isuser(user.get("email"), ldap):
