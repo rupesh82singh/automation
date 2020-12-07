@@ -28,5 +28,5 @@ class IntegrationSignalfx(IntegrationBase):
         else:
             return False
     
-    def name(slef):
+    def name(self):
         return "SignalFx"
