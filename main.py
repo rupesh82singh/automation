@@ -5,13 +5,14 @@ import os
 import logging
 from src.audit.sendevents import MessagePublisher
 
+sources = [IntegrationSignalfx(singalfx_data())]
+
 def lambda_handler( event, _):
     """Initial entry point for lambda"""
 
     logger = logging.getLogger()
     dryrun = event.get('dryrun', False)
     ldap = getconnection()
-    sources = [IntegrationSignalfx(singalfx_data())]
     
     for source in sources:
         messagepub = MessagePublisher(source.name())
