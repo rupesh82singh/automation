@@ -23,6 +23,8 @@ class TestLambdaHandler(unittest.TestCase):
       mock_ldap.return_value = ldap
       mock_source.return_value = sources
       mock_msg_publisher.return_value = msg_publisher
+      event = {'dryrun': False}
+      lambda_handler(event, None)
       mock_is_user.assert_not_called()
       mock_ldap.assert_not_called()
       mock_source.assert_not_called()
