@@ -21,7 +21,7 @@ class TestIntegrationSignalfx(unittest.TestCase):
       self.assertEqual(204, delete_result)
     
     @mock.patch('sendevents.requests.delete', side_effect=MockResponse(500))
-    def test_remove_user_Fail(self):
+    def test_remove_user_fail(self):
       delete_result = self.signalfxsource.remove_user('abc')
       self.assertEqual(500, delete_result) 
       
