@@ -1,6 +1,8 @@
+"""Unit test for Iam Key Publisher"""
+
 import unittest
 from unittest import mock
-from unittest.mock import MagicMock
+import requests
 from sendevents import MessagePublisher
 
 def mocked_request_post(_, __):
