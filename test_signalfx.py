@@ -22,13 +22,13 @@ class TestIntegrationSignalfx(unittest.TestCase):
       self.signalfxsource = IntegrationSignalfx({"API_URL": "https://signalfx.com", "TOKEN": "abcdef"})
     
     @mock.patch('sendevents.requests.get', side_effect=[{'count':0}, {'results' : []])
-    def test_get_users_not_empty(self):
-      users = self.signalfxsource.get_users('https://signalfx.com', [])
+    def test_get_users_empty(self):
+      users = self.signalfxsource.get_users()
       self.assertEqual(0, length(users))
                                                                       
     @mock.patch('sendevents.requests.get', side_effect=[{'count':0}, {'results' : [{"email": "abc@def", "id": 'abc'}]])
     def test_get_users_not_empty(self):
-      users = self.signalfxsource.get_users('https://signalfx.com', [])
+      users = self.signalfxsource.get_users()
       self.assertEqual(1, length(users))
       self.assertEqual('abc@def', users[0].get("email"))
       self.assertEqual('abc', users[0].get("id")) 
