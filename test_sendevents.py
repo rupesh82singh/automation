@@ -27,7 +27,7 @@ class TestMessagePublisher(unittest.TestCase):
     """this is a test case for messagepublisher"""
 
     def setUp(self):
-        self.message_publisher = MessagePublisher()
+        self.message_publisher = MessagePublisher('signalfx')
 
     def test_generate_payload(self):
         """test the generate payload function"""
